@@ -6,23 +6,35 @@ import com.mycompany.hotel.objetos.Habitacion;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Clase principal que gestiona un sistema hotelero.
+ * 
+ * @author [Ricardo]
+ * @version [1.0]
+ */
 public class Hotel {
 
+    /**
+     * Método principal que inicia la ejecución del programa.
+     * 
+     * @param args Argumentos de la línea de comandos (no se utilizan).
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-        ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-        ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>(); // Lista de clientes
+        ArrayList<Empleado> empleados = new ArrayList<Empleado>(); // Lista de empleados
+        ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>(); // Lista de habitaciones
 
-        Cliente cliente = null;
-        Empleado empleado = null;
-        Habitacion habitación = null;
-        String nombre, apellidos, DNI, tipo;
-        int numeroTelefono, idHabitacion, idCliente, idEmpleado, numeroCamas;
-        double costePorDia;
+        Cliente cliente = null; // Cliente actual
+        Empleado empleado = null; // Empleado actual
+        Habitacion habitación = null; // Habitación actual
+        String nombre, apellidos, DNI, tipo; // Datos personales
+        int numeroTelefono, idHabitacion, idCliente, idEmpleado, numeroCamas; // Identificadores y números
+        double costePorDia; // Coste diario
 
-        int opcion = 10;
+        int opcion = 10; // Opción seleccionada
 
+        // Menú principal
         do {
             System.out.println("1. Registrar cliente.");
             System.out.println("2. Dar de baja a un cliente.");
@@ -34,12 +46,13 @@ public class Hotel {
             System.out.println("8. Mostrar todos los empleados.");
             System.out.println("9. Mostrar todas las habitaciones.");
             System.out.println("10. Salir del programa.");
-            System.out.println("Introduce el número de la opcion deseada: ");
+            System.out.println("Introduce el número de la opción deseada: ");
 
-            opcion = scanner.nextInt();
+            opcion = scanner.nextInt(); // Seleccionar opción del menú
 
             switch (opcion) {
                 case 1:
+                    // Registrar un nuevo cliente
                     System.out.println("Introduzca el id del nuevo cliente: ");
                     idCliente = scanner.nextInt();
                     cliente = new Cliente(idCliente);
@@ -55,10 +68,11 @@ public class Hotel {
                     System.out.println("Introduzca el número de teléfono del nuevo cliente: ");
                     numeroTelefono = scanner.nextInt();
                     cliente.numeroTelefono = numeroTelefono;
-                    clientes.add(cliente);
+                    clientes.add(cliente); // Añadir cliente a la lista
 
                     break;
                 case 2:
+                    // Dar de baja a un cliente
                     System.out.println("Introduzca el id del cliente a dar de baja: ");
                     idCliente = scanner.nextInt();
 
@@ -74,6 +88,7 @@ public class Hotel {
 
                     break;
                 case 3:
+                    // Registrar un nuevo empleado
                     System.out.println("Introduzca el id del nuevo empleado: ");
                     idEmpleado = scanner.nextInt();
                     empleado = new Empleado(idEmpleado);
@@ -90,10 +105,11 @@ public class Hotel {
                     System.out.println("Introduzca el número de teléfono del nuevo empleado: ");
                     numeroTelefono = scanner.nextInt();
                     empleado.numeroTelefono = numeroTelefono;
-                    empleados.add(empleado);
+                    empleados.add(empleado); // Añadir empleado a la lista
 
                     break;
                 case 4:
+                    // Dar de baja a un empleado
                     System.out.println("Introduzca el id del empleado a dar de baja: ");
                     idCliente = scanner.nextInt();
                     if (empleados.isEmpty()) {
@@ -111,6 +127,7 @@ public class Hotel {
 
                     break;
                 case 5:
+                    // Agregar una nueva habitación
                     System.out.println("Introduzca el id de la nueva habitación: ");
                     idHabitacion = scanner.nextInt();
                     habitación = new Habitacion(idHabitacion);
@@ -125,10 +142,11 @@ public class Hotel {
                     costePorDia = scanner.nextDouble();
                     habitación.costePorDia = costePorDia;
                     scanner.nextLine();
-                    habitaciones.add(habitación);
+                    habitaciones.add(habitación); // Añadir habitación a la lista
 
                     break;
                 case 6:
+                    // Eliminar una habitación
                     System.out.println("Introduzca el id de la habitación a eliminar: ");
                     idCliente = scanner.nextInt();
                     if (habitaciones.isEmpty()) {
@@ -147,6 +165,7 @@ public class Hotel {
 
                     break;
                 case 7:
+                    // Mostrar todos los clientes
                     if (clientes.isEmpty()) {
                         System.out.println("No hay clientes para mostrar...");
                     } else {
@@ -162,6 +181,7 @@ public class Hotel {
 
                     break;
                 case 8:
+                    // Mostrar todos los empleados
                     if (empleados.isEmpty()) {
                         System.out.println("No hay profesores para mostrar...");
                     } else {
@@ -178,6 +198,7 @@ public class Hotel {
 
                     break;
                 case 9:
+                    // Mostrar todas las habitaciones
                     if (habitaciones.isEmpty()) {
                         System.out.println("No hay habitaciones para mostrar...");
                     } else {
@@ -193,12 +214,14 @@ public class Hotel {
 
                     break;
                 case 10:
+                    // Salir del programa
                     System.out.println("Cerrando el programa...");
 
                     break;
                 default:
+                    // Opción inválida
                     System.out.println("La opción seleccionada no existe...");
             }
-        } while (opcion != 10);
+        } while (opcion != 10); // Continuar hasta que se seleccione la opción de salida
     }
 }
